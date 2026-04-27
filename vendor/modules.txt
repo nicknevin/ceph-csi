@@ -233,10 +233,10 @@ github.com/cespare/xxhash/v2
 # github.com/container-storage-interface/spec v1.12.0
 ## explicit; go 1.23.0
 github.com/container-storage-interface/spec/lib/go/csi
-# github.com/csi-addons/kubernetes-csi-addons v0.14.0
-## explicit; go 1.25.0
+# github.com/csi-addons/kubernetes-csi-addons v0.14.0 => github.com/nicknevin/kubernetes-csi-addons v0.0.0-20260515122632-3c395efb7af3
+## explicit; go 1.25.7
 github.com/csi-addons/kubernetes-csi-addons/api/replication.storage/v1alpha1
-# github.com/csi-addons/spec v0.2.1-0.20250610152019-b5a7205f6a79
+# github.com/csi-addons/spec v0.2.1-0.20260515055340-d4a373713b9a => github.com/csi-addons/spec v0.2.1-0.20260515055340-d4a373713b9a
 ## explicit
 github.com/csi-addons/spec/lib/go/encryptionkeyrotation
 github.com/csi-addons/spec/lib/go/fence
@@ -620,10 +620,10 @@ golang.org/x/time/rate
 # gomodules.xyz/jsonpatch/v2 v2.4.0
 ## explicit; go 1.20
 gomodules.xyz/jsonpatch/v2
-# google.golang.org/genproto/googleapis/rpc v0.0.0-20251202230838-ff82c1b0f217
+# google.golang.org/genproto/googleapis/rpc v0.0.0-20260120221211-b8f7ae30c516
 ## explicit; go 1.24.0
 google.golang.org/genproto/googleapis/rpc/status
-# google.golang.org/grpc v1.79.3
+# google.golang.org/grpc v1.80.0
 ## explicit; go 1.24.0
 google.golang.org/grpc
 google.golang.org/grpc/attributes
@@ -661,6 +661,7 @@ google.golang.org/grpc/internal/grpclog
 google.golang.org/grpc/internal/grpcsync
 google.golang.org/grpc/internal/grpcutil
 google.golang.org/grpc/internal/idle
+google.golang.org/grpc/internal/mem
 google.golang.org/grpc/internal/metadata
 google.golang.org/grpc/internal/pretty
 google.golang.org/grpc/internal/proxyattributes
@@ -739,7 +740,7 @@ gopkg.in/yaml.v2
 # gopkg.in/yaml.v3 v3.0.1
 ## explicit
 gopkg.in/yaml.v3
-# k8s.io/api v0.35.3
+# k8s.io/api v0.35.4
 ## explicit; go 1.25.0
 k8s.io/api/admission/v1
 k8s.io/api/admission/v1beta1
@@ -805,7 +806,7 @@ k8s.io/api/storagemigration/v1beta1
 k8s.io/apiextensions-apiserver/pkg/apis/apiextensions
 k8s.io/apiextensions-apiserver/pkg/apis/apiextensions/v1
 k8s.io/apiextensions-apiserver/pkg/features
-# k8s.io/apimachinery v0.35.3
+# k8s.io/apimachinery v0.35.4
 ## explicit; go 1.25.0
 k8s.io/apimachinery/pkg/api/equality
 k8s.io/apimachinery/pkg/api/errors
@@ -1201,7 +1202,7 @@ k8s.io/kubernetes/pkg/volume/util/hostutil
 k8s.io/kubernetes/pkg/volume/util/recyclerclient
 k8s.io/kubernetes/pkg/volume/util/subpath
 k8s.io/kubernetes/pkg/volume/util/types
-# k8s.io/mount-utils v0.35.3
+# k8s.io/mount-utils v0.35.4
 ## explicit; go 1.25.0
 k8s.io/mount-utils
 # k8s.io/utils v0.0.0-20251002143259-bc988d571ff4
@@ -1281,4 +1282,6 @@ sigs.k8s.io/structured-merge-diff/v6/value
 ## explicit; go 1.22
 sigs.k8s.io/yaml
 # github.com/ceph/ceph-csi/api => ./api
+# github.com/csi-addons/spec => github.com/csi-addons/spec v0.2.1-0.20260515055340-d4a373713b9a
+# github.com/csi-addons/kubernetes-csi-addons => github.com/nicknevin/kubernetes-csi-addons v0.0.0-20260515122632-3c395efb7af3
 # k8s.io/client-go => k8s.io/client-go v0.35.3

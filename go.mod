@@ -1,9 +1,13 @@
 module github.com/ceph/ceph-csi
 
-go 1.25.0
+go 1.25.7
 
 // our own API
 replace github.com/ceph/ceph-csi/api => ./api
+
+replace github.com/csi-addons/spec => github.com/csi-addons/spec v0.2.1-0.20260515055340-d4a373713b9a
+
+replace github.com/csi-addons/kubernetes-csi-addons => github.com/nicknevin/kubernetes-csi-addons v0.0.0-20260515122632-3c395efb7af3
 
 require (
 	github.com/Azure/azure-sdk-for-go/sdk/azidentity v1.13.1
@@ -17,7 +21,7 @@ require (
 	github.com/ceph/go-ceph v0.38.0
 	github.com/container-storage-interface/spec v1.12.0
 	github.com/csi-addons/kubernetes-csi-addons v0.14.0
-	github.com/csi-addons/spec v0.2.1-0.20250610152019-b5a7205f6a79
+	github.com/csi-addons/spec v0.2.1-0.20260515055340-d4a373713b9a
 	github.com/gemalto/kmip-go v0.1.0
 	github.com/golang/protobuf v1.5.4
 	github.com/google/fscrypt v0.3.6
@@ -33,14 +37,14 @@ require (
 	golang.org/x/crypto v0.49.0
 	golang.org/x/net v0.52.0
 	golang.org/x/sys v0.42.0
-	google.golang.org/grpc v1.79.3
+	google.golang.org/grpc v1.80.0
 	google.golang.org/protobuf v1.36.11
-	k8s.io/api v0.35.3
-	k8s.io/apimachinery v0.35.3
+	k8s.io/api v0.35.4
+	k8s.io/apimachinery v0.35.4
 	k8s.io/cloud-provider v0.35.3
 	k8s.io/klog/v2 v2.140.0
 	k8s.io/kubernetes v1.35.3
-	k8s.io/mount-utils v0.35.3
+	k8s.io/mount-utils v0.35.4
 	k8s.io/utils v0.0.0-20251002143259-bc988d571ff4
 )
 
@@ -152,7 +156,7 @@ require (
 	golang.org/x/text v0.35.0 // indirect
 	golang.org/x/time v0.12.0 // indirect
 	gomodules.xyz/jsonpatch/v2 v2.4.0 // indirect
-	google.golang.org/genproto/googleapis/rpc v0.0.0-20251202230838-ff82c1b0f217 // indirect
+	google.golang.org/genproto/googleapis/rpc v0.0.0-20260120221211-b8f7ae30c516 // indirect
 	gopkg.in/evanphx/json-patch.v4 v4.13.0 // indirect
 	gopkg.in/inf.v0 v0.9.1 // indirect
 	gopkg.in/yaml.v2 v2.4.0 // indirect

@@ -148,6 +148,17 @@ func NewMiddlewareStreamServerOption() grpc.ServerOption {
 	return grpc.StreamInterceptor(streamInterceptor)
 }
 
+func getIDFromReplicationSource(src *replication.ReplicationSource) string {
+	if src != nil && src.GetVolume() != nil {
+		return src.GetVolume().GetVolumeId()
+	}
+	if src != nil && src.GetVolumegroup() != nil {
+		return src.GetVolumegroup().GetVolumeGroupId()
+	}
+
+	return ""
+}
+
 // GetIDFromReplication returns the volumeID for Replication.
 func GetIDFromReplication(req interface{}) string {
 	getID := func(r interface {
@@ -155,16 +166,7 @@ func GetIDFromReplication(req interface{}) string {
 		GetReplicationSource() *replication.ReplicationSource
 	},
 	) string {
-		reqID := ""
-		src := r.GetReplicationSource()
-		if src != nil && src.GetVolume() != nil {
-			reqID = src.GetVolume().GetVolumeId()
-		}
-		if reqID == "" {
-			if src != nil && src.GetVolumegroup() != nil {
-				reqID = src.GetVolumegroup().GetVolumeGroupId()
-			}
-		}
+		reqID := getIDFromReplicationSource(r.GetReplicationSource())
 		if reqID == "" {
 			reqID = r.GetVolumeId() //nolint:nolintlint,staticcheck // req.VolumeId is deprecated
 		}
@@ -185,6 +187,8 @@ func GetIDFromReplication(req interface{}) string {
 		return getID(r)
 	case *replication.GetVolumeReplicationInfoRequest:
 		return getID(r)
+	case *replication.GetReplicationDestinationInfoRequest:
+		return getIDFromReplicationSource(r.GetReplicationSource())
 	default:
 		return ""
 	}

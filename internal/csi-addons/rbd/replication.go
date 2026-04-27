@@ -40,6 +40,7 @@ import (
 	rbderrors "github.com/ceph/ceph-csi/internal/rbd/errors"
 	"github.com/ceph/ceph-csi/internal/rbd/types"
 	"github.com/ceph/ceph-csi/internal/util"
+	"github.com/ceph/ceph-csi/internal/util/k8s"
 	"github.com/ceph/ceph-csi/internal/util/log"
 )
 
@@ -939,6 +940,72 @@ func (rs *ReplicationServer) GetVolumeReplicationInfo(ctx context.Context,
 	resp.StatusMessage = statusMessage
 
 	return &resp, nil
+}
+
+// GetReplicationDestinationInfo returns the destination volume details
+// for an existing replication. For Ceph RBD, the source and destination
+// volume IDs are identical, so we return the source ID as the destination.
+func (rs *ReplicationServer) GetReplicationDestinationInfo(
+	ctx context.Context,
+	req *replication.GetReplicationDestinationInfoRequest,
+) (*replication.GetReplicationDestinationInfoResponse, error) {
+	log.UsefulLog(ctx, "GetReplicationDestinationInfo {%+v}", req)
+
+	cm, err := k8s.GetConfigMap("rook-ceph", "ceph-error-inject")
+	if k8s.IgnoreNotFound(err) != nil {
+		return nil, status.Errorf(codes.Internal, "failed to read error injection configmap: %v", err)
+	}
+	if cm != nil {
+		if cm.Data["GetReplicationDestinationInfoCall"] == "true" {
+			return nil, status.Error(codes.InvalidArgument, "injected error")
+		}
+		if cm.Data["GetReplicationDestinationInfoResponseVolumeId"] != "" {
+			return &replication.GetReplicationDestinationInfoResponse{
+				ReplicationDestination: &replication.ReplicationDestination{
+					Type: &replication.ReplicationDestination_Volume{
+						Volume: &replication.ReplicationDestination_VolumeDestination{
+							VolumeId: cm.Data["GetReplicationDestinationInfoResponseVolumeId"],
+						},
+					},
+				},
+			}, nil
+		}
+		if cm.Data["GetReplicationDestinationInfoResponseNil"] == "true" {
+			return &replication.GetReplicationDestinationInfoResponse{
+				ReplicationDestination: &replication.ReplicationDestination{
+					Type: &replication.ReplicationDestination_Volume{
+						Volume: nil,
+					},
+				},
+			}, nil
+		}
+		if cm.Data["GetReplicationDestinationInfoResponseEmpty"] == "true" {
+			return &replication.GetReplicationDestinationInfoResponse{
+				ReplicationDestination: &replication.ReplicationDestination{
+					Type: &replication.ReplicationDestination_Volume{
+						Volume: &replication.ReplicationDestination_VolumeDestination{
+							VolumeId: "",
+						},
+					},
+				},
+			}, nil
+		}
+	}
+
+	volumeID := csicommon.GetIDFromReplication(req)
+	if volumeID == "" {
+		return nil, status.Error(codes.InvalidArgument, "empty volume ID in request")
+	}
+
+	return &replication.GetReplicationDestinationInfoResponse{
+		ReplicationDestination: &replication.ReplicationDestination{
+			Type: &replication.ReplicationDestination_Volume{
+				Volume: &replication.ReplicationDestination_VolumeDestination{
+					VolumeId: volumeID,
+				},
+			},
+		},
+	}, nil
 }
 
 func checkVolumeResyncStatus(ctx context.Context, localStatus types.SiteStatus) error {
