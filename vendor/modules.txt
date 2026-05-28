@@ -233,10 +233,10 @@ github.com/cespare/xxhash/v2
 # github.com/container-storage-interface/spec v1.12.0
 ## explicit; go 1.23.0
 github.com/container-storage-interface/spec/lib/go/csi
-# github.com/csi-addons/kubernetes-csi-addons v0.14.0 => github.com/nicknevin/kubernetes-csi-addons v0.0.0-20260515122632-3c395efb7af3
+# github.com/csi-addons/kubernetes-csi-addons v0.14.0 => github.com/csi-addons/kubernetes-csi-addons v0.14.1-0.20260528060322-2ed0ef956bd4
 ## explicit; go 1.25.7
 github.com/csi-addons/kubernetes-csi-addons/api/replication.storage/v1alpha1
-# github.com/csi-addons/spec v0.2.1-0.20260515055340-d4a373713b9a => github.com/csi-addons/spec v0.2.1-0.20260515055340-d4a373713b9a
+# github.com/csi-addons/spec v0.2.1-0.20260515055340-d4a373713b9a
 ## explicit
 github.com/csi-addons/spec/lib/go/encryptionkeyrotation
 github.com/csi-addons/spec/lib/go/fence
@@ -549,7 +549,7 @@ go.uber.org/automaxprocs/maxprocs
 # go.uber.org/multierr v1.11.0
 ## explicit; go 1.19
 go.uber.org/multierr
-# go.uber.org/zap v1.27.1
+# go.uber.org/zap v1.28.0
 ## explicit; go 1.19
 go.uber.org/zap
 go.uber.org/zap/buffer
@@ -566,7 +566,7 @@ go.yaml.in/yaml/v2
 # go.yaml.in/yaml/v3 v3.0.4
 ## explicit; go 1.16
 go.yaml.in/yaml/v3
-# golang.org/x/crypto v0.49.0
+# golang.org/x/crypto v0.50.0
 ## explicit; go 1.25.0
 golang.org/x/crypto/argon2
 golang.org/x/crypto/blake2b
@@ -575,7 +575,7 @@ golang.org/x/crypto/pbkdf2
 golang.org/x/crypto/pkcs12
 golang.org/x/crypto/pkcs12/internal/rc2
 golang.org/x/crypto/scrypt
-# golang.org/x/net v0.52.0
+# golang.org/x/net v0.53.0
 ## explicit; go 1.25.0
 golang.org/x/net/context
 golang.org/x/net/http/httpguts
@@ -593,16 +593,16 @@ golang.org/x/oauth2/internal
 # golang.org/x/sync v0.20.0
 ## explicit; go 1.25.0
 golang.org/x/sync/errgroup
-# golang.org/x/sys v0.42.0
+# golang.org/x/sys v0.43.0
 ## explicit; go 1.25.0
 golang.org/x/sys/cpu
 golang.org/x/sys/plan9
 golang.org/x/sys/unix
 golang.org/x/sys/windows
-# golang.org/x/term v0.41.0
+# golang.org/x/term v0.42.0
 ## explicit; go 1.25.0
 golang.org/x/term
-# golang.org/x/text v0.35.0
+# golang.org/x/text v0.36.0
 ## explicit; go 1.25.0
 golang.org/x/text/cases
 golang.org/x/text/internal
@@ -1282,6 +1282,5 @@ sigs.k8s.io/structured-merge-diff/v6/value
 ## explicit; go 1.22
 sigs.k8s.io/yaml
 # github.com/ceph/ceph-csi/api => ./api
-# github.com/csi-addons/spec => github.com/csi-addons/spec v0.2.1-0.20260515055340-d4a373713b9a
-# github.com/csi-addons/kubernetes-csi-addons => github.com/nicknevin/kubernetes-csi-addons v0.0.0-20260515122632-3c395efb7af3
+# github.com/csi-addons/kubernetes-csi-addons => github.com/csi-addons/kubernetes-csi-addons v0.14.1-0.20260528060322-2ed0ef956bd4
 # k8s.io/client-go => k8s.io/client-go v0.35.3
