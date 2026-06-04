@@ -650,7 +650,7 @@ func (rs *ReplicationServer) ResyncVolume(ctx context.Context,
 
 	// return error if the image is still primary
 	if info.IsPrimary() {
-		return nil, status.Error(codes.InvalidArgument, "image is in primary state")
+		return nil, status.Error(codes.OutOfRange, "image is in primary state")
 	}
 
 	sts, err := mirror.GetGlobalMirroringStatus(ctx)
